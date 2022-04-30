@@ -1,0 +1,11 @@
+{
+  "name": "snow2cipher",
+  "version": "0.1.1",
+  "description": "Snow 2.0 Stream cipher Javascript Ver.",
+  "main": "src/SnowCipher.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "keywords": ["snow2.0","snow2","streamcipher","cipher"],
+  "license": "ISC"
+}
