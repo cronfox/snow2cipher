@@ -6,6 +6,11 @@
   "scripts": {
     "test": "node test/test.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cronfox/snow2cipher.git"
+  },
+  "homepage": "https://github.com/cronfox/snow2cipher",
   "keywords": ["snow2.0","snow2","streamcipher","cipher"],
   "license": "ISC"
 }
