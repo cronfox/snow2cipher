@@ -1,5 +1,27 @@
-export interface KeyTable{
-    keySize:(128|256)
+/**
+* Create Snow 2.0 Cipher Keystream Generater.
+* 
+*/
+declare class SnowCipher {
+    /**
+     * Create Snow 2.0 Cipher Keystream Generater Instance.
+     * @param {keyTable}st @see{@link KeyTable}
+     */
+    constructor(st: KeyTable)
+    /**
+     * Clocks the cipher 16 times and returns 16 words of keystream symbols in keystream_block.
+     * @returns {Uint32Array}keystream_block
+     */
+    generateKeyStream(): Uint32Array
+    /**
+     * Clocks the cipher once and returns one keystream symbol.
+     * @returns {number} keystream symbol(uint32)
+     */
+    singleClock(): number
+}
+
+declare interface KeyTable {
+    keySize: (128 | 256)
     /**
      * key is of proper length, for keysize=128, key is of lenght 16 bytes, and for keysize=256, key is of length 32 bytes.
      * 
@@ -17,30 +39,11 @@ export interface KeyTable{
      * 
      * If use in Mabinogi,Please Use Int8Array.
      */
-    key : (Uint8Array|Int8Array),
+    key: (Uint8Array | Int8Array),
     /**
      * [IV0,IV1,IV2,IV3]
      */
-    ivTable : Uint32Array
+    ivTable: Uint32Array
 }
-/**
- * Create Snow 2.0 Cipher Keystream Generater.
- * 
- */
-export class SnowCipher{
-    /**
-     * Create Snow 2.0 Cipher Keystream Generater Instance.
-     * @param {keyTable}st @see{@link KeyTable}
-     */
-    constructor(st:KeyTable)
-    /**
-     * Clocks the cipher 16 times and returns 16 words of keystream symbols in keystream_block.
-     * @returns {Uint32Array}keystream_block
-     */
-    generateKeyStream():Uint32Array
-    /**
-     * Clocks the cipher once and returns one keystream symbol.
-     * @returns {number} keystream symbol(uint32)
-     */
-	singleClock():number
-}
+
+export = SnowCipher
