@@ -1,9 +1,9 @@
 {
   "name": "snow2cipher",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "description": "Snow 2.0 Stream cipher Javascript Ver.",
+  "module": "src/SnowCipher.mjs",
   "main": "src/SnowCipher.js",
-  "browser": "src/SnowCipher.browser.js",
   "scripts": {
     "test": "node test/test.js"
   },

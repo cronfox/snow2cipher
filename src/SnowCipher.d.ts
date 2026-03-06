@@ -5,9 +5,11 @@
 declare class SnowCipher {
     /**
      * Create Snow 2.0 Cipher Keystream Generater Instance.
-     * @param {keyTable}st @see{@link KeyTable}
+     * @param {128|256} keySize - key size in bits, either 128 or 256
+     * @param {Uint8Array | Int8Array} key - key bytes
+     * @param {Uint32Array} ivTable - `[IV3,IV2,IV1,IV0]`
      */
-    constructor(st: KeyTable)
+    constructor(keySize: 128 | 256, key: Uint8Array | Int8Array, ivTable: Uint32Array)
     /**
      * Clocks the cipher 16 times and returns 16 words of keystream symbols in keystream_block.
      * @returns {Uint32Array}keystream_block
@@ -19,31 +21,4 @@ declare class SnowCipher {
      */
     singleClock(): number
 }
-
-declare interface KeyTable {
-    keySize: (128 | 256)
-    /**
-     * key is of proper length, for keysize=128, key is of lenght 16 bytes, and for keysize=256, key is of length 32 bytes.
-     * 
-     * key is given in big endian format,
-     * 
-     * For 128 bit key:
-     * key[0]-> msb of k_3 ... key[3]-> lsb of k_3
-     * 
-     *  ...
-     * key[12]-> msb of k_0 ... key[15]-> lsb of k_0
-     * 
-     * For 256 bit key:
-     * key[0]-> msb of k_7 ... key[31]-> lsb of k_0
-     * 
-     * 
-     * If use in Mabinogi,Please Use Int8Array.
-     */
-    key: (Uint8Array | Int8Array),
-    /**
-     * [IV0,IV1,IV2,IV3]
-     */
-    ivTable: Uint32Array
-}
-
 export = SnowCipher
